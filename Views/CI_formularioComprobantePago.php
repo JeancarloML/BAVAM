@@ -7,7 +7,7 @@ class formularioComprobantePago
         $listaPrivilegios = $_SESSION['privilegios'];
         $sidebar = new SideBar;
 ?>
-    <!DOCTYPE html>
+        <!DOCTYPE html>
         <html lang="es-PE">
 
         <head>
@@ -25,8 +25,7 @@ class formularioComprobantePago
                     <?php $sidebar->SideBarShow($listaPrivilegios); ?>
                     <div class="form-container p-5" style="flex-basis: 80%;">
                         <form id="form" action="../Controllers/CC_emitirComprobantePago.php" method="post">
-                            <h1>Emitir Comprobante de Pago</h1>
-                            <p>Tipo de Comprobante</p>
+                            <h1 class="py-3">Tipo de Comprobante</h1>
                             <input type="hidden" name="idOrdenVenta" value="<?php echo $idOrdenVenta; ?>">
                             <div class="row mb-3" style="border: 1px solid black;">
                                 <h4 class="alert alert-primary">Datos de Comprobante de Pago</h4>
@@ -43,12 +42,12 @@ class formularioComprobantePago
                                     <label for="documento" class="form-label">Documento</label>
                                     <input type="text" class="form-control" id="documento" name="documento" required>
                                 </div>
-                                
+
                             </div>
                             <div class="mb-3 col-12">
                                 <input type="submit" class="btn btn-primary w-100" value="Continuar" name="tipoComprobantePago" id="emitirComprobantePago" />
                             </div>
-                        <!-- </form>
+                            <!-- </form>
                             <div class="d-block">
                                 <input class="btn btn-primary w-100" id="emitirProforma" value="Emitir Proforma" name="emitirProforma" type="submit" />
                             </div>
@@ -59,21 +58,20 @@ class formularioComprobantePago
             </div>
             <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
             <script type="text/javascript">
-            window.addEventListener("load", () => {
-                $('#comprobante').change(function() {
-                    $('#documento').val('')
-                    if ($(this).val() == 3) {
-                        $('#documento').prop('placeholder', 'Ingresa tu DNI');
-                        $('#documento').attr('maxlength', '8');
-                    }
-                    
-                    if ($(this).val() == 4) {
-                        $('#documento').prop('placeholder', 'Ingresa tu RUC');
-                        $('#documento').attr('maxlength', '11');
-                    }
-                });
-            });
+                window.addEventListener("load", () => {
+                    $('#comprobante').change(function() {
+                        $('#documento').val('')
+                        if ($(this).val() == 3) {
+                            $('#documento').prop('placeholder', 'Ingresa tu DNI');
+                            $('#documento').attr('maxlength', '8');
+                        }
 
+                        if ($(this).val() == 4) {
+                            $('#documento').prop('placeholder', 'Ingresa tu RUC');
+                            $('#documento').attr('maxlength', '11');
+                        }
+                    });
+                });
             </script>
         </body>
 

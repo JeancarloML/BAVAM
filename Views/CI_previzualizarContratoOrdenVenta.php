@@ -7,6 +7,7 @@ class PrevizualizarContratoOrdenVenta
 ?>
         <div class="w-100">
             <div class="container">
+                <h3>Datos de Contrato</h3>
                 <input type="hidden" id="idContrato" class="form-control" value="<?php echo $contrato[0]['idReferencial'] ?>" name="idContrato" />
                 <input type="hidden" id="idProforma" class="form-control" value="<?php echo $proforma[0]["idreferencial"] ?>" name="idProforma" />
                 <div class="row mb-3" style="border: 1px solid black;">
@@ -63,7 +64,7 @@ class PrevizualizarContratoOrdenVenta
                         <input readonly type="text" class="form-control" name="referencia" value="<?php echo  $contrato[0]['referencia']  ?>" />
                     </div>
                 </div>
-                <h3>Lista de muebles</h3>
+                <h3>Lista de Muebles</h3>
                 <table class="table">
                     <thead>
                         <tr>

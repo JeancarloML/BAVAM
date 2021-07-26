@@ -112,7 +112,7 @@ class EmitirProforma
                                     nombreMuebleInputs[index].value = data[0].nombre
                                     img[index].setAttribute("src",data[0].imagen)
                                     img[index].style.display = "inline-block";
-                                    img2[index].setAttribute("src",data[0].imagne2)
+                                    img2[index].setAttribute("src",data[0].imagen2)
                                     img2[index].style.display = "inline-block";
                                     img3[index].setAttribute("src",data[0].imagen3)
                                     img3[index].style.display = "inline-block";

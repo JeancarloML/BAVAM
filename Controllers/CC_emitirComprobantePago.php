@@ -31,8 +31,6 @@ if (isset($_POST['btnEmitirComprobantePago'])) {
                 if (isset($proformaItems)) {
                     $previzualizarContratoOrdenVenta = new PrevisualizarOrdenVenta();
                     return $previzualizarContratoOrdenVenta->previsualizarOrdenVentaShow($contratoItems, $proformaItems, $idOrdenVenta);
-                    // $previzualizarComprobantePago = new PrevizualizarComprobantePago();
-                    // return $previzualizarComprobantePago->previzualizarComprobantePagoShow($contratoItems, $proformaItems);
                 }
             } else {
                 $mensaje = new FormularioMensajeSistema;
