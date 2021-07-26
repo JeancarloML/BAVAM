@@ -54,7 +54,7 @@ class PrevisualizarComprobantePago
                                         <label for="apellidoM" class="form-label">Apellido Materno</label>
                                         <input readonly type="text" class="form-control" name="apellidoM" value="<?php echo $contratoItems[0]['apellidoM'] ?>" />
                                     </div>
-                                    <div class="mb-3 col-6">
+                                    <div class="mb-3 col-4">
                                         <label for="direccion" class="form-label">Dirección</label>
                                         <input readonly type="text" class="form-control" name="direccion" value="<?php echo  $contratoItems[0]['direccion']  ?>" />
                                     </div>
@@ -62,7 +62,7 @@ class PrevisualizarComprobantePago
                                         <label for="f_emision" class="form-label">Fecha de Emisión</label>
                                         <input readonly type="text" class="form-control" name="f_emision" value="26/07/2021" />
                                     </div>
-                                    <div class="mb-3 col-6">
+                                    <div class="mb-3 col-4">
                                         <label for="dni" class="form-label">Documento de Identidad</label>
                                         <input readonly type="number" class="form-control" name="dni" value="<?php echo $contratoItems[0]['dni'] ?>" />
                                     </div>

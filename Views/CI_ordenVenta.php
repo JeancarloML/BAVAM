@@ -14,7 +14,6 @@ class OrdenVentaFinal
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Orden de Venta</title>
             <link href="https://bootswatch.com/5/flatly/bootstrap.min.css" type="text/css" rel="stylesheet" />
-
         </head>
 
         <body>
@@ -103,8 +102,6 @@ class OrdenVentaFinal
         </body>
 
         </html>
-
-
 <?php
 
     }

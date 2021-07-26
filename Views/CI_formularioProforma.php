@@ -34,11 +34,11 @@ class FormularioProforma
                 <input readonly type="text" class="form-control maxcantidad" name="maxcantidad" required>
             </div>
             <div class="mb-3 row">
-            <picture class="w-100 d-flex justify-content-around">
-                <img src="" alt="" class="img" style="max-width: 300px; display: none; flex-basis: 30%;" />
-                <img src="" alt="" class="img2" style="max-width: 300px; display: none; flex-basis: 30%;" />
-                <img src="" alt="" class="img3" style="max-width: 300px; display: none; flex-basis: 30%;" />
-            </picture>
+                <picture class="w-100 d-flex justify-content-around">
+                    <img src="" alt="" class="img" style="max-width: 300px; display: none; flex-basis: 30%;" />
+                    <img src="" alt="" class="img2" style="max-width: 300px; display: none; flex-basis: 30%;" />
+                    <img src="" alt="" class="img3" style="max-width: 300px; display: none; flex-basis: 30%;" />
+                </picture>
             </div>
         </div>
 <?php

@@ -10,8 +10,6 @@ class formMenuPrincipal
     {
         $listaPrivilegios = $_SESSION['privilegios'];
         $sidebar = new SideBar;
-        // $sidebar->SideBarShow($listaPrivilegios);
-
 ?>
         <!DOCTYPE html>
         <html lang="es-PE">
@@ -31,14 +29,6 @@ class formMenuPrincipal
                     <?php $sidebar->SideBarShow($listaPrivilegios); ?>
                     <div class="form-container p-5" style="flex-basis: 85%;">
                         <h1>Bienvenido(a): <?php echo ucfirst($_SESSION['nombre']); ?></h1>
-                        <!-- <hr>
-                        <form action="../Controllers/CC_emitirProforma.php" class="form" id="form" method="POST">
-                            <div id="form-container" class="row" style="justify-content: space-between; gap: 20px;"></div>
-                            <input class="btn btn-primary w-100 mb-2" type="submit" value="Continuar con proforma" name="continuar" />
-                        </form>
-                        <div class="d-flex flex-wrap">
-                            <button class="btn btn-info w-100" id="agregar">Agregar otro mueble</button>
-                        </div> -->
                     </div>
                 </div>
                 <?php require '../Partials/Footer.php' ?>

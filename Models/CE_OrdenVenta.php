@@ -9,8 +9,6 @@ class OrdenVenta extends Coneccion
         $this->obtenerConeccion();
     }
 
-
-
     public function crearOrdenVenta(
         $idContrato,
         $idProforma
@@ -38,7 +36,7 @@ class OrdenVenta extends Coneccion
             return $contrato;
         }
     }
-    
+
     function buscarOrdenVenta($idReferencial)
     {
         $sql = "SELECT * FROM muebleria.ordenventa WHERE idReferencial = '" . $idReferencial . "';";

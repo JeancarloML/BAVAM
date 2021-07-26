@@ -8,7 +8,6 @@ class previzualizarProforma
     {
         $listaPrivilegios = $_SESSION['privilegios'];
         $sidebar = new SideBar;
-        // $sidebar->SideBarShow($listaPrivilegios);
 ?>
         <!DOCTYPE html>
         <html lang="es-PE">

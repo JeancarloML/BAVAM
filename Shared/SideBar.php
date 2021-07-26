@@ -2,8 +2,6 @@
 
 class SideBar
 {
-
-
     function SideBarShow($listaPrivilegios)
     {
         $numero_privilegios = count($listaPrivilegios);

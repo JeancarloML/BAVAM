@@ -8,7 +8,6 @@ class FormularioContrato
     {
         $listaPrivilegios = $_SESSION['privilegios'];
         $sidebar = new SideBar;
-        // $sidebar->SideBarShow($listaPrivilegios);
 ?>
         <!DOCTYPE html>
         <html lang="es-PE">
@@ -25,7 +24,7 @@ class FormularioContrato
             <div class="" style="min-height: 100vh;">
                 <?php require '../Partials/Nav.php' ?>
                 <div class="d-flex w-100" style="min-height: 90vh;">
-                <?php $sidebar->SideBarShow($listaPrivilegios); ?>
+                    <?php $sidebar->SideBarShow($listaPrivilegios); ?>
                     <div class="form-container p-5" style="flex-basis: 80%;">
                         <form id="form" action="../Controllers/CC_emitirContrato.php" method="POST">
                             <h1>Formulario para Emitir Contratos</h1>

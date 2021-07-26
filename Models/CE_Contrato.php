@@ -9,8 +9,6 @@ class Contrato extends Coneccion
         $this->obtenerConeccion();
     }
 
-
-
     public function crearContrato(
         $nombres,
         $apellidoP,

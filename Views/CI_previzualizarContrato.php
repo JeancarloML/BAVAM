@@ -91,7 +91,7 @@ class PrevizualizarContrato
             </div>
             <script>
                 "use strict"
-                window.addEv",entListener("load () => {
+                window.addEventListener("load", () => {
                     const proformaContainer = document.querySelector("#proforma-container")
                     const idReferencial = document.querySelector("#idReferencial")
                     const formR = new FormData();

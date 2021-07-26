@@ -11,8 +11,6 @@ class EmitirProforma
     {
         $listaPrivilegios = $_SESSION['privilegios'];
         $sidebar = new SideBar;
-        // $sidebar->SideBarShow($listaPrivilegios);
-
 ?>
         <!DOCTYPE html>
         <html lang="es-PE">
@@ -110,11 +108,11 @@ class EmitirProforma
                                     maxCantidadInputs[index].value = data[0].cantidad
                                     cantidadInputs[index].setAttribute("max", data[0].cantidad)
                                     nombreMuebleInputs[index].value = data[0].nombre
-                                    img[index].setAttribute("src",data[0].imagen)
+                                    img[index].setAttribute("src", data[0].imagen)
                                     img[index].style.display = "inline-block";
-                                    img2[index].setAttribute("src",data[0].imagen2)
+                                    img2[index].setAttribute("src", data[0].imagen2)
                                     img2[index].style.display = "inline-block";
-                                    img3[index].setAttribute("src",data[0].imagen3)
+                                    img3[index].setAttribute("src", data[0].imagen3)
                                     img3[index].style.display = "inline-block";
                                 })
                             })

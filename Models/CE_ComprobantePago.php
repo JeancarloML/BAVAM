@@ -9,8 +9,6 @@ class ComprobantePago extends Coneccion
         $this->obtenerConeccion();
     }
 
-
-
     public function crearComprobantePago(
         $idOrdenVenta,
         $comprobante,
