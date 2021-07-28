@@ -1,18 +1,23 @@
 <?php
-include("../Shared/FormularioMensajeSistema.php");
-include("../Models/CE_Mueble.php");
-include("../Models/CE_Proforma.php");
-include("../Models/CE_Contrato.php");
-include("../Views/CI_formularioProforma.php");
-include("../Views/CI_previzualizarProforma.php");
-include("../Views/CI_previzualizarContrato.php");
-include("../Views/CI_proforma.php");
-include("../Views/CI_contrato.php");
+/*
+@compartido
+*/
+include("../../../Shared/FormularioMensajeSistema.php");
+/*
+@modelos
+*/
+include("../../../Models/CE_Mueble.php");
+include("../../../Models/CE_Proforma.php");
+include("../../../Models/CE_Contrato.php");
+/*
+@vistas
+*/
 include("../Views/CI_emitirContrato.php");
-include("../Views/CI_formularioBuscarContrato.php");
+include("../Views/CI_contratoFinal.php");
 include("../Views/CI_formularioBuscarProforma.php");
-include("../Views/CI_previzualizarProformaContrato.php");
 include("../Views/CI_formularioContrato.php");
+include("../Views/CI_previzualizarProformaContrato.php");
+include("../Views/CI_previzualizarContrato.php");
 
 if (isset($_POST['btnEmitirContrato'])) {
     $emitirContrato = new EmitirContrato();

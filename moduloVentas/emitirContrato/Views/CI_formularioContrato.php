@@ -1,5 +1,5 @@
 <?php
-include_once("../Shared/SideBar.php");
+include_once("../../../Shared/SideBar.php");
 session_start();
 class FormularioContrato
 {
@@ -22,7 +22,7 @@ class FormularioContrato
 
         <body>
             <div class="" style="min-height: 100vh;">
-                <?php require '../Partials/Nav.php' ?>
+                <?php require '../../../Partials/Nav.php' ?>
                 <div class="d-flex w-100" style="min-height: 90vh;">
                     <?php $sidebar->SideBarShow($listaPrivilegios); ?>
                     <div class="form-container p-5" style="flex-basis: 80%;">
@@ -100,7 +100,7 @@ class FormularioContrato
                         </form>
                     </div>
                 </div>
-                <?php require '../Partials/Footer.php' ?>
+                <?php require '../../../Partials/Footer.php' ?>
             </div>
             <script>
                 window.addEventListener("load", () => {
