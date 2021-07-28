@@ -1,4 +1,7 @@
 <?php
+
+include_once("../../../Shared/SideBar.php");
+
 class formularioComprobantePago
 {
 
@@ -20,7 +23,7 @@ class formularioComprobantePago
 
         <body>
             <div class="" style="min-height: 100vh;">
-                <?php require '../Partials/Nav.php' ?>
+                <?php require '../../../Partials/Nav.php' ?>
                 <div class="d-flex w-100" style="min-height: 90vh;">
                     <?php $sidebar->SideBarShow($listaPrivilegios); ?>
                     <div class="form-container p-5" style="flex-basis: 80%;">
@@ -47,14 +50,9 @@ class formularioComprobantePago
                             <div class="mb-3 col-12">
                                 <input type="submit" class="btn btn-primary w-100" value="Continuar" name="tipoComprobantePago" id="emitirComprobantePago" />
                             </div>
-                            <!-- </form>
-                            <div class="d-block">
-                                <input class="btn btn-primary w-100" id="emitirProforma" value="Emitir Proforma" name="emitirProforma" type="submit" />
-                            </div>
-                        </form> -->
                     </div>
                 </div>
-                <?php require '../Partials/Footer.php' ?>
+                <?php require '../../../Partials/Footer.php' ?>
             </div>
             <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
             <script type="text/javascript">
@@ -65,7 +63,6 @@ class formularioComprobantePago
                             $('#documento').prop('placeholder', 'Ingresa tu DNI');
                             $('#documento').attr('maxlength', '8');
                         }
-
                         if ($(this).val() == 4) {
                             $('#documento').prop('placeholder', 'Ingresa tu RUC');
                             $('#documento').attr('maxlength', '11');

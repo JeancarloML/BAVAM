@@ -8,7 +8,7 @@
             <div class="d-flex w-100 align-items-center" style="justify-content: flex-end;">
                 <h4 class="text-white px-3">Hola, <?php session_start();
                                                     echo ucfirst($_SESSION['nombre']); ?></h4>
-                <form action="../controllers/CC_AutenticarUsuario.php" method="post">
+                <form action="../../../moduloSeguridad/autenticarUsuario/Controllers/CC_AutenticarUsuario.php" method="POST">
                     <input class="btn btn-danger" type="submit" name="btnLogout" value="Cerrar Sesión">
                 </form>
             </div>

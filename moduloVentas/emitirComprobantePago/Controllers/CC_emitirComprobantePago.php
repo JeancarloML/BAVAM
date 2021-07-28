@@ -1,15 +1,20 @@
 <?php
-include("../Shared/FormularioMensajeSistema.php");
-include("../Models/CE_Mueble.php");
-include("../Models/CE_Proforma.php");
-include("../Models/CE_Contrato.php");
-include("../Models/CE_OrdenVenta.php");
-include("../Models/CE_ComprobantePago.php");
-include("../Views/CI_formularioComprobantePago.php");
-include("../Views/CI_proforma.php");
-include("../Views/CI_contrato.php");
-include("../Views/CI_ordenVenta.php");
+/*
+@compartidos
+*/
+include("../../../Shared/FormularioMensajeSistema.php");
+/*
+@modelos
+*/
+include("../../../Models/CE_Proforma.php");
+include("../../../Models/CE_Contrato.php");
+include("../../../Models/CE_OrdenVenta.php");
+include("../../../Models/CE_ComprobantePago.php");
+/*
+@vistas
+*/
 include("../Views/CI_formularioBuscarOrdenVenta.php");
+include("../Views/CI_formularioComprobantePago.php");
 include("../Views/CI_previsualizarOrdenVenta.php");
 include("../Views/CI_previsualizarComprobantePago.php");
 include("../Views/CI_emitirComprobantePago.php");
@@ -45,7 +50,7 @@ if (isset($_POST['btnEmitirComprobantePago'])) {
     } else {
         $mensaje = new FormularioMensajeSistema;
         $mensaje->FormularioMensajeSistema();
-        return $mensaje->formularioMensajeSistemaShow(0, "Error", "Debe completar los campos requeridos", "../index.php");
+        return $mensaje->formularioMensajeSistemaShow(0, "Error", "Debe completar los campos requeridos", "../../../index.php");
     }
 } else if (isset($_POST['cargarFormOrdenVenta'])) {
     $formularioBuscarOrdenVenta = new FormularioBuscarOrdenVenta();

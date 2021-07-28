@@ -1,15 +1,12 @@
 <?php
 
-include_once("../Shared/SideBar.php");
+include_once("../../../Shared/SideBar.php");
 session_start();
 
 class EmitirComprobantePago
 {
-
-
     function emitirComprobantePagoShow()
     {
-
         $listaPrivilegios = $_SESSION['privilegios'];
         $sidebar = new SideBar;
 ?>
@@ -26,7 +23,7 @@ class EmitirComprobantePago
 
         <body>
             <div class="" style="min-height: 100vh;">
-                <?php require '../Partials/Nav.php' ?>
+                <?php require '../../../Partials/Nav.php' ?>
                 <div class="d-flex w-100" style="min-height: 85vh;">
                     <?php $sidebar->SideBarShow($listaPrivilegios); ?>
                     <div class="form-container p-5" style="flex-basis: 85%;">
@@ -43,7 +40,7 @@ class EmitirComprobantePago
 
                     </div>
                 </div>
-                <?php require '../Partials/Footer.php' ?>
+                <?php require '../../../Partials/Footer.php' ?>
             </div>
 
             <script>

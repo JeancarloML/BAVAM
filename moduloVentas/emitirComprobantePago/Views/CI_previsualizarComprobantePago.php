@@ -1,4 +1,6 @@
 <?php
+include_once("../../../Shared/SideBar.php");
+
 class PrevisualizarComprobantePago
 {
 
@@ -28,7 +30,7 @@ class PrevisualizarComprobantePago
 
         <body>
             <div class="" style="min-height: 100vh;">
-                <?php require '../Partials/Nav.php' ?>
+                <?php require '../../../Partials/Nav.php' ?>
                 <div class="d-flex w-100" style="min-height: 90vh;">
                     <?php $sidebar->SideBarShow($listaPrivilegios); ?> <form id="form" action="../Controllers/CC_emitirComprobantePago.php" method="post">
                         <form id="form" action="../Controllers/CC_emitirComprobantePago.php" method="post">
@@ -107,10 +109,10 @@ class PrevisualizarComprobantePago
                             </div>
                         </form>
                 </div>
-                <?php require '../Partials/Footer.php' ?>
+                <?php require '../../../Partials/Footer.php' ?>
             </div>
         </body>
-        <script src="../html2canvas.min.js"></script>
+        <script src="../../../utils/js/html2canvas.min.js"></script>
         <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
         <script>

@@ -1,7 +1,16 @@
 <?php
+/*
+@compartido
+*/
 include("../../../Shared/FormularioMensajeSistema.php");
+/*
+@modelos
+*/
 include("../../../Models/CE_Mueble.php");
 include("../../../Models/CE_Proforma.php");
+/*
+@vistas
+*/
 include("../Views/CI_emitirProforma.php");
 include("../Views/CI_formularioProforma.php");
 include("../Views/CI_previzualizarProforma.php");

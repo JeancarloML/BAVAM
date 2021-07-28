@@ -46,4 +46,3 @@ if (isset($_POST['btnLogout'])) {
 	session_destroy();
 	header("Location: http://localhost/iberica/index.php");
 }
-?>
