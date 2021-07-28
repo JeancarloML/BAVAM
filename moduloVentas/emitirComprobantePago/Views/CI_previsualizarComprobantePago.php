@@ -104,7 +104,7 @@ class PrevisualizarComprobantePago
                                 <h3 class="">Importe Total = S/. <?php echo $totalImporte ?></h3>
                                 <input type="hidden" name="totalImporte" class="totalImporte" value="<?php echo $totalImporte ?>">
                             </div>
-                            <div class="d-block text-center">
+                            <div class="d-block pb-5 text-center">
                                 <input class="btn btn-primary m-auto" id="emitirProforma" value="Emitir <?php echo $labelComprobante; ?>" name="emitirComprobantePago" type="submit" />
                             </div>
                         </form>
@@ -146,7 +146,7 @@ class PrevisualizarComprobantePago
                             p.classList.add("alert-primary")
                             p.innerHTML = `N° ${data.idComprobantePago}`
                             titleForm.innerHTML = `Comprobante de Pago`
-                            titleContainer.append(p)
+                            titleContainer.children.length == 2 ? null : titleContainer.appendChild(p);
                             generatePdf()
                         }
                     })
