@@ -47,7 +47,7 @@ class ProformaFinal
             <form class="container" method="POST" action="../Controllers/CC_emitirProforma.php">
                 <input class="btn btn-primary" aria-current="page" type="submit" value="Volver a Menu Emitir Proforma" name="btnEmitirProforma" id="btnEmitProforma">
             </form>
-            <script src="../html2canvas.min.js"></script>
+            <script src="../../../utils/js/html2canvas.min.js"></script>
             <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
 

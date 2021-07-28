@@ -1,11 +1,11 @@
 <?php
-include("../Shared/FormularioMensajeSistema.php");
-include("../Models/CE_Mueble.php");
-include("../Models/CE_Proforma.php");
+include("../../../Shared/FormularioMensajeSistema.php");
+include("../../../Models/CE_Mueble.php");
+include("../../../Models/CE_Proforma.php");
+include("../Views/CI_emitirProforma.php");
 include("../Views/CI_formularioProforma.php");
 include("../Views/CI_previzualizarProforma.php");
-include("../Views/CI_proforma.php");
-include("../Views/CI_emitirProforma.php");
+include("../Views/CI_proformaFinal.php");
 
 if (isset($_POST['btnEmitirProforma'])) {
     $mueble = new Mueble();
@@ -16,7 +16,7 @@ if (isset($_POST['btnEmitirProforma'])) {
     } else {
         $mensaje = new FormularioMensajeSistema;
         $mensaje->FormularioMensajeSistema();
-        $mensaje->formularioMensajeSistemaShow(0, "Error", "Nose hay stock disponible", "../index.php");
+        $mensaje->formularioMensajeSistemaShow(0, "Error", "Nose hay stock disponible", "../../../index.php");
     }
 } else if (isset($_POST['agregarMuebleForm'])) {
     $mueble = new Mueble();
@@ -27,7 +27,7 @@ if (isset($_POST['btnEmitirProforma'])) {
     } else {
         $mensaje = new FormularioMensajeSistema;
         $mensaje->FormularioMensajeSistema();
-        $mensaje->formularioMensajeSistemaShow(0, "Error", "Nose hay stock disponible", "../index.php");
+        $mensaje->formularioMensajeSistemaShow(0, "Error", "Nose hay stock disponible", "../../../index.php");
     }
 } else if (isset($_POST['cargarMueble'])) {
     $mueble = new Mueble();
@@ -38,7 +38,7 @@ if (isset($_POST['btnEmitirProforma'])) {
     } else {
         $mensaje = new FormularioMensajeSistema;
         $mensaje->FormularioMensajeSistema();
-        $mensaje->formularioMensajeSistemaShow(0, "Error", "Nose hay stock disponible", "../index.php");
+        $mensaje->formularioMensajeSistemaShow(0, "Error", "Nose hay stock disponible", "../../../index.php");
     }
 } else if (isset($_POST['idMueble'])) {
     $idMueble = $_POST['idMueble'];
@@ -49,7 +49,7 @@ if (isset($_POST['btnEmitirProforma'])) {
     } else {
         $mensaje = new FormularioMensajeSistema;
         $mensaje->FormularioMensajeSistema();
-        $mensaje->formularioMensajeSistemaShow(0, "Error", "Nose hay stock disponible", "../index.php");
+        $mensaje->formularioMensajeSistemaShow(0, "Error", "Nose hay stock disponible", "../../../index.php");
     }
 } else if (isset($_POST['continuar'])) {
     $precio = $_POST['precio'];
@@ -62,7 +62,7 @@ if (isset($_POST['btnEmitirProforma'])) {
     } else {
         $mensaje = new FormularioMensajeSistema;
         $mensaje->FormularioMensajeSistema();
-        $mensaje->formularioMensajeSistemaShow(0, "Error", "Error al intentar continuar con la proforma", "../index.php");
+        $mensaje->formularioMensajeSistemaShow(0, "Error", "Error al intentar continuar con la proforma", "../../../index.php");
     }
 } else if (isset($_POST['emitirProforma'])) {
     $precioTotal = $_POST['precioTotal'];
@@ -79,10 +79,10 @@ if (isset($_POST['btnEmitirProforma'])) {
     } else {
         $mensaje = new FormularioMensajeSistema;
         $mensaje->FormularioMensajeSistema();
-        $mensaje->formularioMensajeSistemaShow(0, "Error", "Nose hay stock disponible", "../index.php");
+        $mensaje->formularioMensajeSistemaShow(0, "Error", "Nose hay stock disponible", "../../../index.php");
     }
 } else {
     $mensaje = new FormularioMensajeSistema;
     $mensaje->FormularioMensajeSistema();
-    $mensaje->formularioMensajeSistemaShow(0, "Error", "Se ah detectado un acceso no permitido", "../index.php");
+    $mensaje->formularioMensajeSistemaShow(0, "Error", "Se ah detectado un acceso no permitido", "../../../index.php");
 }

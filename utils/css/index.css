@@ -1,0 +1,62 @@
+.banner,
+.form {
+  height: 100vh;
+}
+
+.banner {
+  background: url("../img/login.jpg");
+  background-size: cover;
+}
+
+#loginForm {
+  width: 320px;
+  height: 420px;
+}
+
+.loader {
+  width: 100%;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgb(76, 76, 76);
+  clip-path: circle(140.9% at 0 0);
+  animation: load;
+  animation-delay: 2s;
+  animation-duration: 1000ms;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item-loader {
+  animation: loadTime;
+  animation: loadSalt;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes load {
+  0% {
+    clip-path: circle(140.9% at 0 0);
+  }
+
+  100% {
+    clip-path: circle(0% at 0 0);
+  }
+}
+
+@keyframes loadSalt {
+  0% {
+    transition: 0.4s;
+    opacity: 1;
+  }
+
+  100% {
+    transition: 0.4s;
+    opacity: 0;
+  }
+}

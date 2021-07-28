@@ -1,5 +1,5 @@
 <?php
-include_once("../DB/Coneccion.php");
+include_once("Coneccion.php");
 
 class UsuarioPrivilegio extends Coneccion
 {
@@ -24,3 +24,4 @@ class UsuarioPrivilegio extends Coneccion
 		return ($privilegio);
 	}
 }
+?>

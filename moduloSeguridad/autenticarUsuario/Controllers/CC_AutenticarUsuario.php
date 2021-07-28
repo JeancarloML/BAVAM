@@ -1,10 +1,8 @@
 <?php
-include_once("../Shared/FormularioMensajeSistema.php");
-include_once("../Models/CE_Usuario.php");
-include_once("../Models/CE_DetalleUsuarioPrivilegios.php");
+include_once("../../../Shared/FormularioMensajeSistema.php");
 include_once("../Views/CI_menuprincipal.php");
-include("../Models/CE_Mueble.php");
-include("../Views/CI_emitirProforma.php");
+include_once("../../../Models/CE_Usuario.php");
+include_once("../../../Models/CE_DetalleUsuarioPrivilegios.php");
 session_start();
 function validarCampos($login, $password)
 {
@@ -14,26 +12,25 @@ function validarCampos($login, $password)
 		return (0);
 	}
 }
-$btnAceptar = isset($_POST['btnAceptar']);
-if ($btnAceptar) {
-	$_SESSION['btnAceptar'] = $btnAceptar;
+$btnIngresar = isset($_POST['btnIngresar']);
+if ($btnIngresar) {
+	$_SESSION['btnIngresar'] = $btnIngresar;
 }
-if ($_SESSION['btnAceptar']) {
+if ($_SESSION['btnIngresar']) {
 	$login = trim(strtolower($_POST['login']));
 	$password = trim($_POST['password']);
 	$resultado_validacion_campos = validarCampos($login, $password);
 	if ($resultado_validacion_campos == 0) {
 		$mensaje = new FormularioMensajeSistema;
 		$mensaje->FormularioMensajeSistema();
-		$mensaje->FormularioMensajeSistemaShow(0, 'Error', "Ingrese datos validos.", "../index.php");
+		$mensaje->FormularioMensajeSistemaShow(0, 'Error', "Ingrese datos validos.", "../../../index.php");
 	} else {
 		$usuario = new Usuario;
 		$resultado = $usuario->login($login, $password);
-
 		if ($resultado == 0) {
 			$mensaje = new FormularioMensajeSistema;
 			$mensaje->FormularioMensajeSistema();
-			$mensaje->FormularioMensajeSistemaShow(0, 'Error', "Usuario no encontrado <br> o está inactivo.", "../index.php");
+			$mensaje->FormularioMensajeSistemaShow(0, 'Error', "Usuario no encontrado <br> o está inactivo.", "../../../index.php");
 		} else {
 			$objPrivilegio = new UsuarioPrivilegio;
 			$listaPrivilegios = $objPrivilegio->obtenerPrivilegiosUsuario($login);
@@ -49,3 +46,4 @@ if (isset($_POST['btnLogout'])) {
 	session_destroy();
 	header("Location: http://localhost/iberica/index.php");
 }
+?>

@@ -1,12 +1,13 @@
 <?php
-include_once("../Shared/SideBar.php");
+
+include_once("../../../Shared/SideBar.php");
 session_start();
 
-class formMenuPrincipal
+class EmitirProforma
 {
 
 
-    function formMenuPrincipalShow()
+    function emitirProformaShow()
     {
         $listaPrivilegios = $_SESSION['privilegios'];
         $sidebar = new SideBar;
@@ -24,14 +25,22 @@ class formMenuPrincipal
 
         <body>
             <div class="" style="min-height: 100vh;">
-                <?php require '../Partials/Nav.php' ?>
+                <?php require '../../../Partials/Nav.php' ?>
                 <div class="d-flex w-100" style="min-height: 85vh;">
                     <?php $sidebar->SideBarShow($listaPrivilegios); ?>
                     <div class="form-container p-5" style="flex-basis: 85%;">
-                        <h1>Bienvenido(a): <?php echo ucfirst($_SESSION['nombre']); ?></h1>
+                        <h1>Emitir proforma</h1>
+                        <hr>
+                        <form action="../Controllers/CC_emitirProforma.php" class="form" id="form" method="POST">
+                            <div id="form-container" class="row" style="justify-content: space-between; gap: 20px;"></div>
+                            <input class="btn btn-primary w-100 mb-2" type="submit" value="Continuar con proforma" name="continuar" />
+                        </form>
+                        <div class="d-flex flex-wrap">
+                            <button class="btn btn-info w-100" id="agregar">Agregar otro mueble</button>
+                        </div>
                     </div>
                 </div>
-                <?php require '../Partials/Footer.php' ?>
+                <?php require '../../../Partials/Footer.php' ?>
             </div>
 
             <script>
@@ -78,6 +87,9 @@ class formMenuPrincipal
                     function loadInputs() {
                         const nombreInputs = document.querySelectorAll(".nombre")
                         const precioInputs = document.querySelectorAll(".precio")
+                        const img = document.querySelectorAll(".img")
+                        const img2 = document.querySelectorAll(".img2")
+                        const img3 = document.querySelectorAll(".img3")
                         const maxCantidadInputs = document.querySelectorAll(".maxcantidad")
                         const cantidadInputs = document.querySelectorAll(".cantidad")
                         const maderaInputs = document.querySelectorAll(".madera")
@@ -96,6 +108,12 @@ class formMenuPrincipal
                                     maxCantidadInputs[index].value = data[0].cantidad
                                     cantidadInputs[index].setAttribute("max", data[0].cantidad)
                                     nombreMuebleInputs[index].value = data[0].nombre
+                                    img[index].setAttribute("src", data[0].imagen)
+                                    img[index].style.display = "inline-block";
+                                    img2[index].setAttribute("src", data[0].imagen2)
+                                    img2[index].style.display = "inline-block";
+                                    img3[index].setAttribute("src", data[0].imagen3)
+                                    img3[index].style.display = "inline-block";
                                 })
                             })
                         })

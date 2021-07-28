@@ -1,5 +1,5 @@
 <?php
-include_once("../DB/Coneccion.php");
+include_once("Coneccion.php");
 
 class OrdenVenta extends Coneccion
 {
