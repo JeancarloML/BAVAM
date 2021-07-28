@@ -9,8 +9,8 @@
 }
 
 #loginForm {
-  width: 320px;
-  height: 420px;
+  width: 450px;
+  max-height: 420px;
 }
 
 .loader {
@@ -19,7 +19,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: rgb(76, 76, 76);
+  background: rgb(76,76,76);
   clip-path: circle(140.9% at 0 0);
   animation: load;
   animation-delay: 2s;

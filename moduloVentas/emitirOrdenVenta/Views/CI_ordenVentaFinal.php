@@ -50,7 +50,6 @@ class OrdenVentaFinal
                     function buscarContrato() {
                         const formR = new FormData();
                         formR.append("buscarContrato", "buscarContrato");
-                        console.log(idContrato)
                         formR.append("idContrato", idContrato.value);
                         fetch("../Controllers/CC_emitirOrdenVenta.php", {
                             method: "POST",

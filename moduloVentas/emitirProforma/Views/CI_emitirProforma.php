@@ -50,9 +50,6 @@ class EmitirProforma
                     const btnAdd = document.querySelector("#agregar")
                     const btnNext = document.querySelector("#continuar")
                     const form1 = document.querySelector("#form")
-                    form1.addEventListener("submit", (e) => {
-                        console.log(e.target.elements)
-                    })
                     loadMuebleForm()
                     btnAdd.addEventListener("click", () => {
                         const formR = new FormData();
