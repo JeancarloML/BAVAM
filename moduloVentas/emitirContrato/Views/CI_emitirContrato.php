@@ -71,7 +71,6 @@ class EmitirContrato
                                 method: "POST",
                                 body: formR
                             }).then(response => response.text()).then(data => {
-                                console.log(data)
                                 const div = document.createElement("div");
                                 div.innerHTML = data;
                                 div.classList.add("col-12")
