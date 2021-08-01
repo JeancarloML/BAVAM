@@ -2,7 +2,6 @@
 
 function mostarFormularioMueble()
 {
-
     include_once("CC_emitirProforma.php");
     $emitirProforma = new CC_emitirProforma;
     $emitirProforma->obtenerFormularioMuebles();

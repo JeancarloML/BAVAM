@@ -2,12 +2,12 @@
 
 function mostrarFormulario()
 {
-    include_once("../Views/CI_formularioBuscarProforma.php");
-    $formularioProforma = new FormularioBuscarProforma();
-    return $formularioProforma->formularioBuscarProformaShow();
+    include_once("../Views/CI_formularioBuscarContrato.php");
+    $formularioContrato = new FormularioBuscarContrato();
+    return $formularioContrato->formularioBuscarContratoShow();
 }
 
-if (isset($_POST['btnEmitirContrato'])) {
+if (isset($_POST['btnFormularioBuscarContrato'])) {
     mostrarFormulario();
 } else {
     include_once("../../../Shared/FormularioMensajeSistema.php");

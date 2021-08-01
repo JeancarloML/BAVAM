@@ -32,13 +32,6 @@ function validarDatos(
     }
 }
 
-function mostrarMensajeError($mensaje)
-{
-    include_once("../../../Shared/FormularioMensajeSistema.php");
-    $mensaje = new FormularioMensajeSistema;
-    $mensaje->FormularioMensajeSistema();
-    $mensaje->formularioMensajeSistemaShow(0, "Error", $mensaje, "../../../index.php");
-};
 
 if (isset($_POST['emitirContrato'])) {
     validarDatos(

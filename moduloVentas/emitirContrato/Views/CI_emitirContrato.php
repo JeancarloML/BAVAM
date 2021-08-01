@@ -88,8 +88,8 @@ class EmitirContrato
 
                     function cargarForm() {
                         const formR = new FormData();
-                        formR.append("btnEmitirContrato", "btnEmitirContrato");
-                        fetch("../Controllers/obtenerFormularioBuscarContrato.php", {
+                        formR.append("btnFormularioBuscarProforma", "btnFormularioBuscarProforma");
+                        fetch("../Controllers/obtenerFormularioBuscarProforma.php", {
                             method: "POST",
                             body: formR
                         }).then(response => response.text()).then(data => {

@@ -20,14 +20,14 @@ class OrdenVentaFinal
             <div class="" style="min-height: 100vh;">
                 <div class="w-100" style="min-height: 90vh;">
                     <div class="container p-5 m-auto">
-                        <form id="htmlData" action="../Controllers/CC_emitirContrato.php" method="POST">
+                        <form id="htmlData" action="../Controllers/emitirOrdenVentaFinal.php" method="POST">
                             <h1>Orden de Venta</h1>
                             <h2 class="alert alert-primary"> N° <?php echo $idOrdenVenta ?></h2>
                             <input type="hidden" value="<?php echo $idContrato ?>" name="idContrato" id="idContrato" />
                             <input type="hidden" value="<?php echo $idProforma ?>" name="idProforma" id="idProforma">
                             <div class="row py-4" id="contrato-container"></div>
                         </form>
-                        <form class="container" method="POST" action="../Controllers/CC_emitirOrdenVenta.php">
+                        <form class="container" method="POST" action="../Controllers/obtenerEmitirOrdenVenta.php">
                             <input class="btn btn-primary" aria-current="page" type="submit" value="Volver a Menu Orden de Venta" name="btnEmitirOrdenVenta" id="btnEmitirOrdenVenta">
                         </form>
                     </div>
@@ -51,7 +51,7 @@ class OrdenVentaFinal
                         const formR = new FormData();
                         formR.append("buscarContrato", "buscarContrato");
                         formR.append("idContrato", idContrato.value);
-                        fetch("../Controllers/CC_emitirOrdenVenta.php", {
+                        fetch("../Controllers/obtenerContrato.php", {
                             method: "POST",
                             body: formR
                         }).then(response => response.text()).then(data => {

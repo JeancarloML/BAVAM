@@ -32,7 +32,7 @@ class EmitirOrdenVenta
                         <form action="" class="form" id="form">
                             <div id="form-container" class="row" style="justify-content: space-between; gap: 20px;"></div>
                         </form>
-                        <form id="form2" action="../Controllers/CC_emitirOrdenVenta.php" method="POST">
+                        <form id="form2" action="../Controllers/emitirOrdenVentaFinal.php" method="POST">
                             <div class="row" id="contrato-container">
                             </div>
                             <input class="btn btn-primary w-100 mb-2" type="submit" value="Emitir Orden de Venta" name="emitirOrdenVenta" />
@@ -59,7 +59,7 @@ class EmitirOrdenVenta
                             const formR = new FormData();
                             formR.append("buscarContrato", "buscarContrato");
                             formR.append("idContrato", e.target[0].value);
-                            fetch("../Controllers/CC_emitirOrdenVenta.php", {
+                            fetch("../Controllers/obtenerContrato.php", {
                                 method: "POST",
                                 body: formR
                             }).then(response => response.text()).then(data => {
@@ -79,8 +79,8 @@ class EmitirOrdenVenta
 
                     function cargarContratoForm() {
                         const formR = new FormData();
-                        formR.append("cargarFormContrato", "cargarFormContrato");
-                        fetch("../Controllers/CC_emitirOrdenVenta.php", {
+                        formR.append("btnFormularioBuscarContrato", "btnFormularioBuscarContrato");
+                        fetch("../Controllers/obtenerFormularioBuscarContrato.php", {
                             method: "POST",
                             body: formR
                         }).then(response => response.text()).then(data => {
