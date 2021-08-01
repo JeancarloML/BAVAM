@@ -26,7 +26,7 @@ class PrevizualizarContrato
                 <div class="d-flex w-100" style="min-height: 90vh;">
                     <?php $sidebar->SideBarShow($listaPrivilegios); ?>
                     <div class="form-container p-5" style="flex-basis: 80%;">
-                        <form id="form" action="../Controllers/CC_emitirContrato.php" method="POST">
+                        <form id="form" action="../Controllers/emitirContratoFinal.php" method="POST">
                             <p class="alert alert-secondary">Revisar todos los datos antes de continuar</p>
                             <div class="row mb-3" style="border: 1px solid black;">
                                 <h4 class="alert alert-primary">Contrato</h4>
@@ -98,7 +98,7 @@ class PrevizualizarContrato
                     const idReferencialValue = idReferencial.value
                     formR.append("buscarProforma", "buscarProforma");
                     formR.append("idReferencial", idReferencialValue);
-                    fetch("../Controllers/CC_emitirContrato.php", {
+                    fetch("../Controllers/obtenerProforma.php", {
                         method: "POST",
                         body: formR
                     }).then(response => response.text()).then(data => {

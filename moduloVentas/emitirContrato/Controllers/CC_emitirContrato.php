@@ -1,160 +1,100 @@
 <?php
-/*
-@compartido
-*/
-include("../../../Shared/FormularioMensajeSistema.php");
-/*
-@modelos
-*/
-include("../../../Models/CE_Mueble.php");
-include("../../../Models/CE_Proforma.php");
-include("../../../Models/CE_Contrato.php");
-/*
-@vistas
-*/
-include("../Views/CI_emitirContrato.php");
-include("../Views/CI_contratoFinal.php");
-include("../Views/CI_formularioBuscarProforma.php");
-include("../Views/CI_formularioContrato.php");
-include("../Views/CI_previzualizarProformaContrato.php");
-include("../Views/CI_previzualizarContrato.php");
 
-if (isset($_POST['btnEmitirContrato'])) {
-    $emitirContrato = new EmitirContrato();
-    return $emitirContrato->emitirContratoShow();
-} else if (isset($_POST['buscarProforma'])) {
-    $idReferencial = $_POST['idReferencial'];
-    if (isset($idReferencial)) {
+class CC_emitirContrato
+{
+    function obtenerProforma($idReferencial)
+    {
+        include_once("../../../Models/CE_Proforma.php");
         $proforma = new Proforma();
         $proformaItems = $proforma->buscarProforma($idReferencial);
         if (isset($proformaItems)) {
+            include_once("../Views/CI_previzualizarProformaContrato.php");
             $previzualizarProformaContrato = new PrevizualizarProformaContrato();
             return $previzualizarProformaContrato->previzualizarProformaContratoShow($proformaItems);
         } else {
+            include_once("../../../Shared/FormularioMensajeSistema.php");
             $mensaje = new FormularioMensajeSistema;
             $mensaje->FormularioMensajeSistema();
-            $mensaje->formularioMensajeSistemaShow(0, "Error", "No se encuentraron proformas", '', $btn = "btnEmitirContrato");
+            $mensaje->formularioMensajeSistemaShow(0, "Error", "No se encontraron Proforma", '', $btn = "btnEmitirContrato");
         }
-    } else {
-        $mensaje = new FormularioMensajeSistema;
-        $mensaje->FormularioMensajeSistema();
-        $mensaje->formularioMensajeSistemaShow(0, "Error", "Debe completar los campos requeridos", "../index.php");
     }
-} else if (isset($_POST['cargarFormProforma'])) {
-    $formularioProforma = new FormularioBuscarProforma();
-    return $formularioProforma->formularioBuscarProformaShow();
-} else if (isset($_POST['continuarContrato'])) {
-    $idReferencial = $_POST['idReferencial'];
-    if (isset($idReferencial)) {
+
+    function obtenerFormulario($idReferencial)
+    {
+        include_once("../../../Models/CE_Contrato.php");
         $contrato = new Contrato();
         $departamentos = $contrato->obtenerDepartamentos();
         if (isset($departamentos)) {
+            include_once("../Views/CI_formularioContrato.php");
             $formularioContrato = new FormularioContrato();
             $formularioContrato->formularioContratoShow($idReferencial, $departamentos);
         } else {
+            include_once("../../../Shared/FormularioMensajeSistema.php");
             $mensaje = new FormularioMensajeSistema;
             $mensaje->FormularioMensajeSistema();
-            $mensaje->formularioMensajeSistemaShow(0, "Error", "No hay departamentos registrados", "<a class='btn btn-primary' href='../index.php'>Ir al inicio</a>");
+            $mensaje->formularioMensajeSistemaShow(0, "Error", "No hay departamentos registrados", "../index.php");
         }
-    } else {
-        $mensaje = new FormularioMensajeSistema;
-        $mensaje->FormularioMensajeSistema();
-        $mensaje->formularioMensajeSistemaShow(0, "Error", "Debe completar los campos requeridos", "<a class='btn btn-primary' href='../index.php'>Ir al inicio</a>");
     }
-} else if (isset($_POST['mostrarProvincias'])) {
-    $idDepartamento = $_POST['idDepartamento'];
-    if (isset($_POST['idDepartamento'])) {
+    function obtenerProvincias($idDepartamento)
+    {
+        include_once("../../../Models/CE_Contrato.php");
         $contrato = new Contrato();
         $provincias = $contrato->obtenerProvincias($idDepartamento);
         if (isset($provincias)) {
             print_r(json_encode($provincias));
         } else {
+            include_once("../../../Shared/FormularioMensajeSistema.php");
             $mensaje = new FormularioMensajeSistema;
             $mensaje->FormularioMensajeSistema();
-            $mensaje->formularioMensajeSistemaShow(0, "Error", "No hay provincias registradas", "<a class='btn btn-primary' href='../index.php'>Ir al inicio</a>");
+            $mensaje->formularioMensajeSistemaShow(0, "Error", "No hay provincias registradas", "../index.php");
         }
-    } else {
-        $mensaje = new FormularioMensajeSistema;
-        $mensaje->FormularioMensajeSistema();
-        $mensaje->formularioMensajeSistemaShow(0, "Error", "Debe completar los campos requeridos", "<a class='btn btn-primary' href='../index.php'>Ir al inicio</a>");
     }
-} else if (isset($_POST['mostrarDistritos'])) {
-    $idProvincia = $_POST['idProvincia'];
-    if (isset($_POST['idProvincia'])) {
+
+    function obtenerDistritos($idProvincia)
+    {
+        include_once("../../../Models/CE_Contrato.php");
         $contrato = new Contrato();
         $distritos = $contrato->obtenerDistritos($idProvincia);
         if (isset($distritos)) {
             print_r(json_encode($distritos));
         } else {
+            include_once("../../../Shared/FormularioMensajeSistema.php");
             $mensaje = new FormularioMensajeSistema;
             $mensaje->FormularioMensajeSistema();
-            $mensaje->formularioMensajeSistemaShow(0, "Error", "No hay distritos registrados", "../index.php");
+            $mensaje->formularioMensajeSistemaShow(0, "Error", "No hay distritos registradas", "../index.php");
         }
-    } else {
-        $mensaje = new FormularioMensajeSistema;
-        $mensaje->FormularioMensajeSistema();
-        $mensaje->formularioMensajeSistemaShow(0, "Error", "Debe completar los campos requeridos", "../index.php");
     }
-} else if (isset($_POST['previzualizarContrato'])) {
-    $nombres = $_POST['nombres'];
-    $apellidoM = $_POST['apellidoM'];
-    $apellidoP = $_POST['apellidoP'];
-    $celular = $_POST['celular'];
-    $dni = $_POST['dni'];
-    $correo = $_POST['correo'];
-    $direccion = $_POST['direccion'];
-    $idDepartamento = $_POST['departamento'];
-    $idProvincia = $_POST['provincia'];
-    $idDistrito = $_POST['distrito'];
-    $referencia = $_POST['referencia'];
-    $idReferencial = $_POST['idReferencial'];
-    if (isset($nombres, $apellidoP, $apellidoM, $celular, $dni, $correo, $idDepartamento, $idProvincia, $idDistrito, $direccion, $referencia, $idReferencial)) {
+
+    function mostrarPrevizualizarContrato($nombres, $apellidoP, $apellidoM, $celular, $dni, $correo, $idDepartamento, $idProvincia, $idDistrito, $direccion, $referencia, $idReferencial)
+    {
+        include_once("../../../Models/CE_Contrato.php");
         $contrato = new Contrato();
         $ubicacion = $contrato->obtenerUbicacion($idDepartamento, $idProvincia, $idDistrito);
         if (isset($ubicacion)) {
+            include_once("../Views/CI_previzualizarContrato.php");
             $previzualizarContrato = new PrevizualizarContrato();
             return $previzualizarContrato->previzualizarContratoShow($nombres, $apellidoP, $apellidoM, $celular, $dni, $correo, $ubicacion[0]['departamento'], $ubicacion[0]['provincia'], $ubicacion[0]['distrito'], $direccion, $referencia, $idReferencial);
         } else {
+            include_once("../../../Shared/FormularioMensajeSistema.php");
             $mensaje = new FormularioMensajeSistema;
             $mensaje->FormularioMensajeSistema();
             $mensaje->formularioMensajeSistemaShow(0, "Error", "No hay ubicaciones registradas", "../index.php");
         }
-    } else {
-        $mensaje = new FormularioMensajeSistema;
-        $mensaje->FormularioMensajeSistema();
-        $mensaje->formularioMensajeSistemaShow(0, "Error", "Error al intentar continuar con el contrato", "../index.php");
     }
-} else if (isset($_POST['emitirContrato'])) {
-    $nombres = $_POST['nombres'];
-    $apellidoM = $_POST['apellidoM'];
-    $apellidoP = $_POST['apellidoP'];
-    $celular = $_POST['celular'];
-    $dni = $_POST['dni'];
-    $correo = $_POST['correo'];
-    $direccion = $_POST['direccion'];
-    $departamento = $_POST['departamento'];
-    $provincia = $_POST['provincia'];
-    $distrito = $_POST['distrito'];
-    $referencia = $_POST['referencia'];
-    $idProforma = $_POST['idReferencial'];
-    if (isset($nombres, $apellidoP, $apellidoM, $celular, $dni, $correo, $departamento, $provincia, $distrito, $direccion, $referencia, $idProforma)) {
+    function emitirContrato($nombres, $apellidoP, $apellidoM, $celular, $dni, $correo, $departamento, $provincia, $distrito, $direccion, $referencia, $idProforma)
+    {
+        include_once("../../../Models/CE_Contrato.php");
         $contrato = new Contrato();
         $idReferencial = $contrato->crearContrato($nombres, $apellidoP, $apellidoM, $celular, $dni, $correo, $departamento, $provincia, $distrito, $direccion, $referencia, $idProforma);
         if (isset($idReferencial)) {
+            include_once("../Views/CI_contratoFinal.php");
             $contratoFinal = new ContratoFinal();
-            $contratoFinal->contratoFinalShow($idReferencial, $nombres, $apellidoP, $apellidoM, $celular, $dni, $correo, $departamento, $provincia, $distrito, $direccion, $referencia, $idProforma);
+            return $contratoFinal->contratoFinalShow($idReferencial, $nombres, $apellidoP, $apellidoM, $celular, $dni, $correo, $departamento, $provincia, $distrito, $direccion, $referencia, $idProforma);
         } else {
+            include_once("../../../Shared/FormularioMensajeSistema.php");
             $mensaje = new FormularioMensajeSistema;
             $mensaje->FormularioMensajeSistema();
-            $mensaje->formularioMensajeSistemaShow(0, "Error", "Nose hay stock disponible", "../index.php");
+            $mensaje->formularioMensajeSistemaShow(0, "Error", "Nose se pudo generar el contrato", "../index.php");
         }
-    } else {
-        $mensaje = new FormularioMensajeSistema;
-        $mensaje->FormularioMensajeSistema();
-        $mensaje->formularioMensajeSistemaShow(0, "Error", "Nose hay stock disponible", "../index.php");
     }
-} else {
-    $mensaje = new FormularioMensajeSistema;
-    $mensaje->FormularioMensajeSistema();
-    $mensaje->formularioMensajeSistemaShow(0, "Error", "Se ah detectado un acceso no permitido", "../index.php");
 }

@@ -37,7 +37,7 @@ class EmitirContrato
                             <div class="row" id="proforma-container">
                             </div>
                         </form>
-                        <form id="form2" action="../Controllers/CC_emitirContrato.php" method="POST">
+                        <form id="form2" action="../Controllers/obtenerFormularioContrato.php" method="POST">
                             <input type="hidden" value="" id="idReferencial" name="idReferencial">
                             <input class="btn btn-primary w-100 mb-2" type="submit" value="Continuar con contrato" name="continuarContrato" />
                         </form>
@@ -67,10 +67,11 @@ class EmitirContrato
                             formR.append("idReferencial", idReferencial);
                             const idReferencial2 = document.querySelector("#idReferencial")
                             idReferencial2.value = idReferencial;
-                            fetch("../Controllers/CC_emitirContrato.php", {
+                            fetch("../Controllers/obtenerProforma.php", {
                                 method: "POST",
                                 body: formR
                             }).then(response => response.text()).then(data => {
+                                console.log(data)
                                 const div = document.createElement("div");
                                 div.innerHTML = data;
                                 div.classList.add("col-12")
@@ -87,8 +88,8 @@ class EmitirContrato
 
                     function cargarForm() {
                         const formR = new FormData();
-                        formR.append("cargarFormProforma", "cargarFormProforma");
-                        fetch("../Controllers/CC_emitirContrato.php", {
+                        formR.append("btnEmitirContrato", "btnEmitirContrato");
+                        fetch("../Controllers/obtenerFormularioBuscarContrato.php", {
                             method: "POST",
                             body: formR
                         }).then(response => response.text()).then(data => {

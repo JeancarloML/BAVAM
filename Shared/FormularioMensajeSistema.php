@@ -27,12 +27,12 @@ class FormularioMensajeSistema extends Squeleton
               <p class="card-text"><small class="text-muted">
                   <?php switch ($btn) {
                     case ($btn == "btnEmitProforma"):
-                      echo '<form method="POST" action="../Controllers/CC_emitirProforma.php">
+                      echo '<form method="POST" action="../Controllers/obtenerEmitirProforma.php">
                               <input class="mb-2 btn-primary btn w-100" aria-current="page" type="submit" value="Ok" name="btnEmitProforma" id="btnEmitProforma">
                             </form>';
                       break;
                     case ($btn == "btnEmitirContrato"):
-                      echo '<form method="POST" action="../Controllers/CC_emitirContrato.php">
+                      echo '<form method="POST" action="../Controllers/obtenerEmitirContrato.php">
                               <input class="mb-2 btn-primary btn w-100" aria-current="page" type="submit" value="Ok" name="btnEmitirContrato" id="btnEmitirContrato">
                             </form>';
                       break;

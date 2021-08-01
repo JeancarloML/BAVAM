@@ -80,7 +80,7 @@ class ContratoFinal
                             </div>
                             <div class="row py-4" id="proforma-container"></div>
                         </form>
-                        <form class="container" method="POST" action="../Controllers/CC_emitirContrato.php">
+                        <form class="container" method="POST" action="../Controllers/obtenerEmitirContrato.php">
                             <input class="btn btn-primary" aria-current="page" type="submit" value="Volver a Menu Emitir Contrato" name="btnEmitirContrato" id="btnEmitirContrato">
                         </form>
                     </div>
@@ -101,7 +101,7 @@ class ContratoFinal
                     const idProformaValue = idProforma.value
                     formR.append("buscarProforma", "buscarProforma");
                     formR.append("idReferencial", idProformaValue);
-                    fetch("../Controllers/CC_emitirContrato.php", {
+                    fetch("../Controllers/obtenerProforma.php", {
                         method: "POST",
                         body: formR
                     }).then(response => response.text()).then(data => {

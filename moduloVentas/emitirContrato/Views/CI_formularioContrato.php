@@ -26,7 +26,7 @@ class FormularioContrato
                 <div class="d-flex w-100" style="min-height: 90vh;">
                     <?php $sidebar->SideBarShow($listaPrivilegios); ?>
                     <div class="form-container p-5" style="flex-basis: 80%;">
-                        <form id="form" action="../Controllers/CC_emitirContrato.php" method="POST">
+                        <form id="form" action="../Controllers/previzualizarContrato.php" method="POST">
                             <h1>Formulario para Emitir Contratos</h1>
                             <div class="row mb-3" style="border: 1px solid black;">
                                 <h4 class="alert alert-primary">Contrato</h4>
@@ -109,9 +109,9 @@ class FormularioContrato
                     const distritoRef = document.querySelector('#distrito');
                     departamentoRef.addEventListener("change", (e) => {
                         const formData = new FormData()
-                        formData.append("mostrarProvincias", "mostrarProvincias")
+                        formData.append("obtenerProvincias", "obtenerProvincias")
                         formData.append("idDepartamento", e.target.value)
-                        fetch("../Controllers/CC_emitirContrato.php", {
+                        fetch("../Controllers/obtenerProvincias.php", {
                             method: "POST",
                             body: formData
                         }).then(res => res.json()).then(provincias => {
@@ -125,9 +125,9 @@ class FormularioContrato
                     })
                     provinciaRef.addEventListener("change", (e) => {
                         const formData = new FormData()
-                        formData.append("mostrarDistritos", "mostrarDistritos")
+                        formData.append("obtenerDistritos", "obtenerDistritos")
                         formData.append("idProvincia", e.target.value)
-                        fetch("../Controllers/CC_emitirContrato.php", {
+                        fetch("../Controllers/obtenerDistritos.php", {
                             method: "POST",
                             body: formData
                         }).then(res => res.json()).then(distritos => {

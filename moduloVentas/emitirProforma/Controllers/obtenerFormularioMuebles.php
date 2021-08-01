@@ -1,12 +1,5 @@
 <?php
 
-function mostrarMensajeError()
-{
-    include_once("../../../Shared/FormularioMensajeSistema.php");
-    $mensaje = new FormularioMensajeSistema;
-    $mensaje->FormularioMensajeSistema();
-    return $mensaje->formularioMensajeSistemaShow(0, "Error", "Nose hay stock disponible", "../../../index.php");
-}
 function mostarFormularioMueble()
 {
 
@@ -28,5 +21,8 @@ if (isset($_POST['btnCargarFormularioMueble'])) {
 } else if (isset($_POST['btnCargarDatosMueble'])) {
     mostrarDatosMueble();
 } else {
-    mostrarMensajeError();
+    include_once("../../../Shared/FormularioMensajeSistema.php");
+    $mensaje = new FormularioMensajeSistema;
+    $mensaje->FormularioMensajeSistema();
+    return $mensaje->formularioMensajeSistemaShow(0, "Error", "Nose hay stock disponible", "../../../index.php");
 }

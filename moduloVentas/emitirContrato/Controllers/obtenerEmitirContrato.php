@@ -1,14 +1,14 @@
 <?php
 
-function mostrarEmitirProforma()
+function mostrarEmitirContrato()
 {
-    include_once("../Views/CI_emitirProforma.php");
-    $emitirProforma = new EmitirProforma();
-    $emitirProforma->emitirProformaShow();
+    include_once("../Views/CI_emitirContrato.php");
+    $emitirContrato = new EmitirContrato();
+    $emitirContrato->emitirContratoShow();
 }
 
-if (isset($_POST['btnEmitirProforma'])) {
-    mostrarEmitirProforma();
+if (isset($_POST['btnEmitirContrato'])) {
+    mostrarEmitirContrato();
 } else {
     include_once("../../../Shared/FormularioMensajeSistema.php");
     $mensaje = new FormularioMensajeSistema;
