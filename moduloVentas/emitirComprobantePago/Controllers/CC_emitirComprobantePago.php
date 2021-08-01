@@ -1,66 +1,98 @@
 <?php
-/*
-@compartidos
-*/
-include("../../../Shared/FormularioMensajeSistema.php");
-/*
-@modelos
-*/
-include("../../../Models/CE_Proforma.php");
-include("../../../Models/CE_Contrato.php");
-include("../../../Models/CE_OrdenVenta.php");
-include("../../../Models/CE_ComprobantePago.php");
-/*
-@vistas
-*/
-include("../Views/CI_formularioBuscarOrdenVenta.php");
-include("../Views/CI_formularioComprobantePago.php");
-include("../Views/CI_previsualizarOrdenVenta.php");
-include("../Views/CI_previsualizarComprobantePago.php");
-include("../Views/CI_emitirComprobantePago.php");
 
-if (isset($_POST['btnEmitirComprobantePago'])) {
-    $emitirComprobantePago = new EmitirComprobantePago;
-    $emitirComprobantePago->emitirComprobantePagoShow();
-} else if (isset($_POST['buscarOrdenVenta'])) {
-    $idOrdenVenta = $_POST['idOrdenVenta'];
-    if (isset($idOrdenVenta)) {
+
+
+class CC_emitirComprobantePago
+{
+
+    function obtenerOrdenVenta($idOrdenVenta)
+    {
+        include_once("../../../Models/CE_OrdenVenta.php");
         $ordenVenta = new OrdenVenta();
         $ordenVentaItems = $ordenVenta->buscarOrdenVenta($idOrdenVenta);
         if (isset($ordenVentaItems)) {
+            include_once("../../../Models/CE_Contrato.php");
             $contrato = new Contrato();
             $contratoItems = $contrato->buscarContrato($ordenVentaItems[0]['idContrato']);
             if (isset($contratoItems)) {
+                include_once("../../../Models/CE_Proforma.php");
                 $proforma = new Proforma();
                 $proformaItems = $proforma->buscarProforma($ordenVentaItems[0]['idProforma']);
                 if (isset($proformaItems)) {
+                    include_once("../Views/CI_previsualizarOrdenVenta.php");
                     $previzualizarContratoOrdenVenta = new PrevisualizarOrdenVenta();
                     return $previzualizarContratoOrdenVenta->previsualizarOrdenVentaShow($contratoItems, $proformaItems, $idOrdenVenta);
                 }
             } else {
+                include_once("../../../Shared/FormularioMensajeSistema.php");
                 $mensaje = new FormularioMensajeSistema;
                 $mensaje->FormularioMensajeSistema();
-                return $mensaje->formularioMensajeSistemaShow(0, "Error", "No se encuentraro proforma orden de vebta a contrato", '', $btn = "btnEmitirOrdenVenta");
+                $mensaje->formularioMensajeSistemaShow(0, "Error", "No se encuentraro contratos asociados a esa orden de venta", '', $btn = "btnEmitirComprobantePago");
             }
         } else {
+            include_once("../../../Shared/FormularioMensajeSistema.php");
             $mensaje = new FormularioMensajeSistema;
             $mensaje->FormularioMensajeSistema();
-            return $mensaje->formularioMensajeSistemaShow(0, "Error", "No se encuentro la orden de venta", '', $btn = "btnEmitirOrdenVenta");
+            $mensaje->formularioMensajeSistemaShow(0, "Error", "No se encuentro la orden de venta", '', $btn = "btnEmitirComprobantePago");
         }
-    } else {
-        $mensaje = new FormularioMensajeSistema;
-        $mensaje->FormularioMensajeSistema();
-        return $mensaje->formularioMensajeSistemaShow(0, "Error", "Debe completar los campos requeridos", "../../../index.php");
     }
-} else if (isset($_POST['cargarFormOrdenVenta'])) {
-    $formularioBuscarOrdenVenta = new FormularioBuscarOrdenVenta();
-    return $formularioBuscarOrdenVenta->formularioBuscarOrdenVentaShow();
-} else if (isset($_POST['emitirComprobantePago'])) {
-    $idContrato = $_POST['idContrato'];
-    $idProforma = $_POST['idProforma'];
-    $idOrdenVenta = $_POST['idOrdenVenta'];
-    $idComprobante = $_POST['idComprobante'];
-    if (isset($idContrato, $idProforma)) {
+
+    function obtenerFormulario($idOrdenVenta)
+    {
+        include_once("../../../Models/CE_ComprobantePago.php");
+        $comprobantePago = new ComprobantePago();
+        $comprobantes = $comprobantePago->obtenerTiposComprobantes();
+        if (isset($comprobantes)) {
+            include_once("../Views/CI_formularioComprobantePago.php");
+            $formularioComprobantePago = new formularioComprobantePago();
+            return $formularioComprobantePago->formularioComprobantePagoShow($comprobantes, $idOrdenVenta);
+        } else {
+            include_once("../../../Shared/FormularioMensajeSistema.php");
+            $mensaje = new FormularioMensajeSistema;
+            $mensaje->FormularioMensajeSistema();
+            $mensaje->formularioMensajeSistemaShow(0, "Error", "No se encuentraron comprobantes de pago disponibles", '', $btn = "btnEmitirComprobantePago");
+        }
+    }
+    function mostrarPrevizualizarComprobantePago($comprobantePago, $idOrdenVenta)
+    {
+        include_once("../../../Models/CE_OrdenVenta.php");
+        $ordenVenta = new OrdenVenta();
+        $ordenVentaItems = $ordenVenta->buscarOrdenVenta($idOrdenVenta);
+        if (isset($ordenVentaItems)) {
+            include_once("../../../Models/CE_Contrato.php");
+            $contrato = new Contrato();
+            $contratoItems = $contrato->buscarContrato($ordenVentaItems[0]['idContrato']);
+            if (isset($contratoItems)) {
+                include_once("../../../Models/CE_Proforma.php");
+                $proforma = new Proforma();
+                $proformaItems = $proforma->buscarProforma($ordenVentaItems[0]['idProforma']);
+                if (isset($proformaItems)) {
+                    include_once("../Views/CI_previsualizarComprobantePago.php");
+                    $previsualizarComprobantePago = new previsualizarComprobantePago();
+                    return $previsualizarComprobantePago->previsualizarComprobantePagoShow($comprobantePago, $contratoItems, $proformaItems, $idOrdenVenta);
+                } else {
+                    include_once("../../../Shared/FormularioMensajeSistema.php");
+                    $mensaje = new FormularioMensajeSistema;
+                    $mensaje->FormularioMensajeSistema();
+                    $mensaje->formularioMensajeSistemaShow(0, "Error", "No se encuentraron proformas asociadas a orden de venta", '', $btn = "btnEmitirComprobantePago");
+                }
+            } else {
+                include_once("../../../Shared/FormularioMensajeSistema.php");
+                $mensaje = new FormularioMensajeSistema;
+                $mensaje->FormularioMensajeSistema();
+                $mensaje->formularioMensajeSistemaShow(0, "Error", "No se encuentraro un contrato asociado a la orden de venta", '', $btn = "btnEmitirComprobantePago");
+            }
+        } else {
+            include_once("../../../Shared/FormularioMensajeSistema.php");
+            $mensaje = new FormularioMensajeSistema;
+            $mensaje->FormularioMensajeSistema();
+            $mensaje->formularioMensajeSistemaShow(0, "Error", "No se encuentraron orden de venta", '', $btn = "btnEmitirComprobantePago");
+        }
+    }
+
+    function emitirComprobantePago($idContrato, $idProforma, $idOrdenVenta, $idComprobante)
+    {
+        include_once("../../../Models/CE_ComprobantePago.php");
         $comprobantePago = new ComprobantePago();
         $comprobantePagoConfirmado = $comprobantePago->crearComprobantePago($idOrdenVenta, $idComprobante, $idProforma, $idContrato);
         if (isset($comprobantePagoConfirmado)) {
@@ -68,43 +100,5 @@ if (isset($_POST['btnEmitirComprobantePago'])) {
         } else {
             print_r(json_encode(array("ok" => false, "mensaje" => "No se pudo crear el comprobante de pago")));
         }
-    } else {
-        $mensaje = new FormularioMensajeSistema;
-        $mensaje->FormularioMensajeSistema();
-        $mensaje->formularioMensajeSistemaShow(0, "Error", "Datos invalidos", '', $btn = "btnEmitirOrdenVenta");
     }
-} else if (isset($_POST['continuar'])) {
-    $idOrdenVenta = $_POST['idOrdenVenta'];
-    $comprobantePago = new ComprobantePago();
-    $comprobantes = $comprobantePago->obtenerTiposComprobantes();
-    if (isset($comprobantes)) {
-        $formularioComprobantePago = new formularioComprobantePago();
-        return $formularioComprobantePago->formularioComprobantePagoShow($comprobantes, $idOrdenVenta);
-    }
-} else if (isset($_POST['tipoComprobantePago'])) {
-    $comprobantePago = $_POST['comprobante'];
-    echo $idReferencial;
-    if (isset($comprobantePago)) {
-        $idOrdenVenta = $_POST['idOrdenVenta'];
-        if (isset($idOrdenVenta)) {
-            $ordenVenta = new OrdenVenta();
-            $ordenVentaItems = $ordenVenta->buscarOrdenVenta($idOrdenVenta);
-            if (isset($ordenVentaItems)) {
-                $contrato = new Contrato();
-                $contratoItems = $contrato->buscarContrato($ordenVentaItems[0]['idContrato']);
-                if (isset($contratoItems)) {
-                    $proforma = new Proforma();
-                    $proformaItems = $proforma->buscarProforma($ordenVentaItems[0]['idProforma']);
-                    if (isset($proformaItems)) {
-                        $previsualizarComprobantePago = new previsualizarComprobantePago();
-                        return $previsualizarComprobantePago->previsualizarComprobantePagoShow($comprobantePago, $contratoItems, $proformaItems, $idOrdenVenta);
-                    }
-                }
-            }
-        }
-    }
-} else {
-    $mensaje = new FormularioMensajeSistema;
-    $mensaje->FormularioMensajeSistema();
-    $mensaje->formularioMensajeSistemaShow(0, "Error", "Se ha detectado un acceso no permitido", "../index.php");
 }

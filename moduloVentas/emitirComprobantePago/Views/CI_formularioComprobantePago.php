@@ -1,6 +1,7 @@
 <?php
 
 include_once("../../../Shared/SideBar.php");
+session_start();
 
 class formularioComprobantePago
 {
@@ -27,7 +28,7 @@ class formularioComprobantePago
                 <div class="d-flex w-100" style="min-height: 90vh;">
                     <?php $sidebar->SideBarShow($listaPrivilegios); ?>
                     <div class="form-container p-5" style="flex-basis: 80%;">
-                        <form id="form" action="../Controllers/CC_emitirComprobantePago.php" method="post">
+                        <form id="form" action="../Controllers/previzualizarComprobantePago.php" method="post">
                             <h1 class="py-3">Tipo de Comprobante</h1>
                             <input type="hidden" name="idOrdenVenta" value="<?php echo $idOrdenVenta; ?>">
                             <div class="row mb-3" style="border: 1px solid black;">
@@ -48,7 +49,7 @@ class formularioComprobantePago
 
                             </div>
                             <div class="mb-3 col-12">
-                                <input type="submit" class="btn btn-primary w-100" value="Continuar" name="tipoComprobantePago" id="emitirComprobantePago" />
+                                <input type="submit" class="btn btn-primary w-100" value="Continuar" name="previzualizarComprobantePago" id="emitirComprobantePago" />
                             </div>
                     </div>
                 </div>

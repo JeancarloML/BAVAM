@@ -1,5 +1,6 @@
 <?php
 include_once("../../../Shared/SideBar.php");
+session_start();
 
 class PrevisualizarComprobantePago
 {
@@ -33,7 +34,7 @@ class PrevisualizarComprobantePago
                 <?php require '../../../Partials/Nav.php' ?>
                 <div class="d-flex w-100" style="min-height: 90vh;">
                     <?php $sidebar->SideBarShow($listaPrivilegios); ?> <form id="form" action="../Controllers/CC_emitirComprobantePago.php" method="post">
-                        <form id="form" action="../Controllers/CC_emitirComprobantePago.php" method="post">
+                        <form id="form" action="../Controllers/emitirComprobantePagoFinal.php" method="post">
                             <div id="htmlData" class="form-container p-5" style="flex-basis: 80%;">
                                 <div id="title-form-container" class="row">
                                     <h1 id="title-form">Emitir Comprobante de Pago</h1>
@@ -136,7 +137,7 @@ class PrevisualizarComprobantePago
                     formR.append("idProforma", idProforma.value);
                     formR.append("idOrdenVenta", idOrdenVenta.value);
                     formR.append("idComprobante", idComprobante.value);
-                    fetch("../Controllers/CC_emitirComprobantePago.php", {
+                    fetch("../Controllers/emitirComprobantePagoFinal.php", {
                         method: "POST",
                         body: formR
                     }).then(response => response.json()).then(data => {

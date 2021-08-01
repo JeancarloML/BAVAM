@@ -32,10 +32,10 @@ class EmitirComprobantePago
                         <form action="" class="form" id="form">
                             <div id="form-container" class="row" style="justify-content: space-between; gap: 20px;"></div>
                         </form>
-                        <form id="form2" action="../Controllers/CC_emitirComprobantePago.php" method="POST">
+                        <form id="form2" action="../Controllers/obtenerFormularioComprobantePago.php" method="POST">
                             <div class="row" id="ordenventa-container">
                             </div>
-                            <input class="btn btn-primary w-100 mb-2" type="submit" value="Continuar" name="continuar" />
+                            <input class="btn btn-primary w-100 mb-2" type="submit" value="Continuar" name="continuarComprobantePago" />
                         </form>
 
                     </div>
@@ -60,7 +60,7 @@ class EmitirComprobantePago
                             formR.append("buscarOrdenVenta", "buscarOrdenVenta");
                             formR.append("idOrdenVenta", e.target[0].value);
 
-                            fetch("../Controllers/CC_emitirComprobantePago.php", {
+                            fetch("../Controllers/obtenerOrdenVenta.php", {
                                 method: "POST",
                                 body: formR
                             }).then(response => response.text()).then(data => {
@@ -80,8 +80,8 @@ class EmitirComprobantePago
 
                     function cargarOrdenVentaForm() {
                         const formR = new FormData();
-                        formR.append("cargarFormOrdenVenta", "cargarFormOrdenVenta");
-                        fetch("../Controllers/CC_emitirComprobantePago.php", {
+                        formR.append("btnFormularioBuscarOrdenVenta", "btnFormularioBuscarOrdenVenta");
+                        fetch("../Controllers/obtenerFormularioBuscarOrdenVenta.php", {
                             method: "POST",
                             body: formR
                         }).then(response => response.text()).then(data => {
