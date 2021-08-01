@@ -26,7 +26,7 @@ class previzualizarProforma
                 <div class="d-flex w-100" style="min-height: 90vh;">
                     <?php $sidebar->SideBarShow($listaPrivilegios); ?>
                     <div class="form-container p-5" style="flex-basis: 80%;">
-                        <form id="form" action="../Controllers/CC_emitirProforma.php" method="post">
+                        <form id="form" action="../Controllers/emitirProformaFinal.php" method="POST">
                             <h1>Previzualización de Proforma</h1>
                             <table class="table">
                                 <thead>

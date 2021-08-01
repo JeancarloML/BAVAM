@@ -44,7 +44,7 @@ class ProformaFinal
                 </table>
                 <h2>Importe total = S/. <?php echo $totalImporte ?></h2>
             </div>
-            <form class="container" method="POST" action="../Controllers/CC_emitirProforma.php">
+            <form class="container" method="POST" action="../Controllers/obtenerEmitirProforma.php">
                 <input class="btn btn-primary" aria-current="page" type="submit" value="Volver a Menu Emitir Proforma" name="btnEmitirProforma" id="btnEmitProforma">
             </form>
             <script src="../../../utils/js/html2canvas.min.js"></script>

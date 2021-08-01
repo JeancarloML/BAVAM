@@ -21,14 +21,6 @@ class Proforma extends Coneccion
             return $proformaItems;
         }
     }
-    public function obtenerMueble($idmueble)
-    {
-        $sql = "SELECT * FROM muebles where idmuebles=" . $idmueble;
-        $resultado = mysqli_query($this->obtenerConeccion(), $sql);
-        $mueble = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
-        $this->desconectar();
-        return $mueble;
-    }
 
     public function
     emitirProformaFinal($idMuebles, $cantidades, $precioTotal, $nombres)

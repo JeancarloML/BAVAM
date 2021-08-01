@@ -31,9 +31,9 @@ class EmitirProforma
                     <div class="form-container p-5" style="flex-basis: 85%;">
                         <h1>Emitir proforma</h1>
                         <hr>
-                        <form action="../Controllers/CC_emitirProforma.php" class="form" id="form" method="POST">
+                        <form action="../Controllers/previzualizarProforma.php" class="form" id="form" method="POST">
                             <div id="form-container" class="row" style="justify-content: space-between; gap: 20px;"></div>
-                            <input class="btn btn-primary w-100 mb-2" type="submit" value="Continuar con proforma" name="continuar" />
+                            <input class="btn btn-primary w-100 mb-2" type="submit" value="Continuar con proforma" name="previzualizarProforma" />
                         </form>
                         <div class="d-flex flex-wrap">
                             <button class="btn btn-info w-100" id="agregar">Agregar otro mueble</button>
@@ -52,24 +52,13 @@ class EmitirProforma
                     const form1 = document.querySelector("#form")
                     loadMuebleForm()
                     btnAdd.addEventListener("click", () => {
-                        const formR = new FormData();
-                        formR.append("agregarMuebleForm", "agregarMuebleForm");
-                        fetch("../Controllers/CC_emitirProforma.php", {
-                            method: "POST",
-                            body: formR
-                        }).then(response => response.text()).then(data => {
-                            const div = document.createElement("div");
-                            div.innerHTML = data;
-                            div.classList.add("col-12")
-                            form.appendChild(div);
-                            loadInputs()
-                        })
+                        loadMuebleForm();
                     })
 
                     function loadMuebleForm() {
                         const formR = new FormData();
-                        formR.append("cargarMueble", "cargarMueble");
-                        fetch("../Controllers/CC_emitirProforma.php", {
+                        formR.append("btnCargarFormularioMueble", "btnCargarFormularioMueble");
+                        fetch("../Controllers/obtenerFormularioMuebles.php", {
                             method: "POST",
                             body: formR
                         }).then(response => response.text()).then(data => {
@@ -94,9 +83,9 @@ class EmitirProforma
                         nombreInputs.forEach((nombreInput, index) => {
                             nombreInput.addEventListener("change", (e) => {
                                 const formR = new FormData();
-                                formR.append("cargarDato", "changeInputs");
+                                formR.append("btnCargarDatosMueble", "btnCargarDatosMueble");
                                 formR.append("idMueble", e.target.value);
-                                fetch("../Controllers/CC_emitirProforma.php", {
+                                fetch("../Controllers/obtenerFormularioMuebles.php", {
                                     method: "POST",
                                     body: formR
                                 }).then(response => response.json()).then(data => {

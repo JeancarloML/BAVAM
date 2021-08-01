@@ -21,9 +21,9 @@ class Mueble extends Coneccion
         $this->desconectar();
         return $muebles;
     }
-    public function obtenerMueble($idmueble)
+    public function obtenerMueble($idMueble)
     {
-        $sql = "SELECT * FROM muebles where idmuebles=" . $idmueble;
+        $sql = "SELECT * FROM muebles where idmuebles=" . $idMueble;
         $resultado = mysqli_query($this->obtenerConeccion(), $sql);
         $mueble = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
         $this->desconectar();
