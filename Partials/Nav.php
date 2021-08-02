@@ -1,6 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-        <a class="navbar-brand px-5" href="#">IBERICA SA</a>
+        <div class="px-2 d-flex align-items-center">
+            <img src="../../../utils/img/logo.jpeg" alt="BAVAM" style="width: 60px;" />
+            <h2 class="px-4 text-white">BAVAM</h2>
+        </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
