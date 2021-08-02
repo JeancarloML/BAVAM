@@ -15,7 +15,7 @@ function validarDatos($precio, $idMueble, $cantidad, $nombre)
         include_once("../../../Shared/FormularioMensajeSistema.php");
         $mensaje = new FormularioMensajeSistema;
         $mensaje->FormularioMensajeSistema();
-        $mensaje->formularioMensajeSistemaShow(0, "Error","Error al intentar continuar con la proforma", "../../../index.php");
+        $mensaje->formularioMensajeSistemaShow(0, "Error", "Error al intentar continuar con la proforma", "../../../index.php");
     }
 }
 
@@ -25,5 +25,5 @@ if (isset($_POST['previzualizarProforma'])) {
     include_once("../../../Shared/FormularioMensajeSistema.php");
     $mensaje = new FormularioMensajeSistema;
     $mensaje->FormularioMensajeSistema();
-    $mensaje->formularioMensajeSistemaShow(0, "Error","Error acceso no permitido", "../../../index.php");
+    $mensaje->formularioMensajeSistemaShow(0, "Error", "Error acceso no permitido", "../../../index.php");
 }
