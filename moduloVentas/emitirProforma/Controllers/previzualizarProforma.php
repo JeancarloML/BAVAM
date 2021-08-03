@@ -15,7 +15,12 @@ function validarDatos($precio, $idMueble, $cantidad, $nombre)
         include_once("../../../Shared/FormularioMensajeSistema.php");
         $mensaje = new FormularioMensajeSistema;
         $mensaje->FormularioMensajeSistema();
-        $mensaje->formularioMensajeSistemaShow(0, "Error", "Error al intentar continuar con la proforma", "../../../index.php");
+        $mensaje->formularioMensajeSistemaShow(
+            0,
+            "Error",
+            "Error al intentar continuar con la proforma",
+            "../../../index.php"
+        );
     }
 }
 

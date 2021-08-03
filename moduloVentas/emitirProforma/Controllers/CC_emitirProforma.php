@@ -36,11 +36,11 @@ class CC_emitirProforma
     {
         include_once("../../../Models/CE_Proforma.php");
         $proforma = new Proforma();
-        $idreferencial = $proforma->emitirProformaFinal($idMuebles, $cantidades, $precioTotal, $nombres);
-        if (isset($idreferencial)) {
+        $idReferencial = $proforma->emitirProformaFinal($idMuebles, $cantidades, $precioTotal, $nombres);
+        if (isset($idReferencial)) {
             include_once("../Views/CI_proformaFinal.php");
             $proforma = new ProformaFinal();
-            $proforma->proformaFinalShow($idreferencial, $idMuebles, $cantidades, $precios, $nombres, $totalImporte);
+            $proforma->proformaFinalShow($idReferencial, $idMuebles, $cantidades, $precios, $nombres, $totalImporte);
         } else {
             include_once("../../../Shared/FormularioMensajeSistema.php");
             $mensaje = new FormularioMensajeSistema;
